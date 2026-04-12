@@ -1,0 +1,24 @@
+<!--------------- about-service---------------->
+<section class="about-service product ">
+    <div class="container">
+        <div class="about-service-section">
+            <div class="row">
+                @for (item of data; track $index) {
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-5">
+                    <div class="about-wrapper">
+                        <div class="myBackground feature-icon">
+                          <span [innerHTML]="item.icon"></span>
+                        </div>
+                        <div class="wrapper-info">
+                            <h5 class="wrapper-details about-details fs-2">{{item.name}}</h5>
+                            <p style="text-align: justify;">{{item.shortDescription}}</p>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+
+</section>
+<!--------------- about-service-end---------------->

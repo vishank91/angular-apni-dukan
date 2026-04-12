@@ -1,0 +1,142 @@
+<app-navbar></app-navbar>
+<!-- <app-breadcrum title="Shop"></app-breadcrum> -->
+
+<!--------------- products-sidebar-section--------------->
+<section class="product product-sidebar footer-padding">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-3">
+                <div class="sidebar">
+                    <div class="sidebar-section">
+                        <div class="sidebar-wrapper">
+                            <h5 class="wrapper-heading">Main Categories</h5>
+                            <div class="sidebar-item">
+                                <ul class="sidebar-list">
+                                    @for (item of maincategory; track $index) {
+                                    <li>
+                                        <input type="checkbox" id="mobile" (change)="getInputCheckbox('maincategory',item.name)" name="mobile">
+                                        <label for="mobile">{{item.name}}</label>
+                                    </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="sidebar-wrapper">
+                            <h5 class="wrapper-heading">Sub Categories</h5>
+                            <div class="sidebar-item">
+                                <ul class="sidebar-list">
+                                    @for (item of subcategory; track $index) {
+                                    <li>
+                                        <input type="checkbox" id="mobile" (change)="getInputCheckbox('subcategory',item.name)" name="mobile">
+                                        <label for="mobile">{{item.name}}</label>
+                                    </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="sidebar-wrapper">
+                            <h5 class="wrapper-heading">Brands</h5>
+                            <div class="sidebar-item">
+                                <ul class="sidebar-list">
+                                    @for (item of brand; track $index) {
+                                    <li>
+                                        <input type="checkbox" id="mobile" (change)="getInputCheckbox('brand',item.name)" name="mobile">
+                                        <label for="mobile">{{item.name}}</label>
+                                    </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="sidebar-wrapper">
+                            <h5 class="wrapper-heading">Color</h5>
+                            <div class="sidebar-item">
+                                <ul class="sidebar-list">
+                                    @for (item of colors; track $index) {
+                                    <li>
+                                        <input type="checkbox" id="red" (change)="getInputCheckbox('color',item)" name="red">
+                                        <label for="red">{{item}}</label>
+                                    </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="sidebar-wrapper">
+                            <h5 class="wrapper-heading">Size</h5>
+                            <div class="sidebar-item">
+                                <ul class="sidebar-list">
+                                    @for (item of sizes; track $index) {
+                                    <li>
+                                        <input type="checkbox" id="red" (change)="getInputCheckbox('size',item)" name="red">
+                                        <label for="red">{{item}}</label>
+                                    </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="product-sidebar-section">
+                    <div class="row g-5">
+                        <div class="col-lg-12">
+                            <div class="product-sorting-section">
+                                <div class="result">
+                                    <p>Showing <span>{{data.length}} results</span></p>
+                                </div>
+                                <div class="product-sorting">
+                                    <span class="product-sort">Sort by:</span>
+                                    <select class="form-select" (change)="sortFilter($event)">
+                                        <option value="1">Latest</option>
+                                        <option value="2">Price :  Low to Hight</option>
+                                        <option value="3">Price :  Hight to Low</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        @for (item of data; track $index) {
+                        <div class="col-lg-4 col-md-6">
+                            <div class="product-wrapper" data-aos-duration="100">
+                                <div class="product-img">
+                                    <img src="{{imageServerUrl}}/{{item.pic[0]}}" style="height: 300px;width: 100%;"
+                                        alt="product-img">
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <h4 class="fs-4 mx-3">{{item.brand}}</h4>
+                                    <h4 class="fs-4 mx-3">{{item.stock?`${item.stockQuantity} Left In Stock`:'Out Of
+                                        Stock'}}
+                                    </h4>
+                                </div>
+                                <div class="product-info text-center">
+                                    <div class="product-description">
+                                        <a [routerLink]="['/product']" [queryParams]="{id:item.id}"
+                                            class="product-details">{{item.name}}</a>
+                                        <div class="fs-4 mt-2">
+                                            <del class="price-cut">&#8377;{{item.basePrice}}</del>
+                                            <span class="new-price">&#8377;{{item.finalPrice}}</span>
+                                            <sup class="fs-5">{{item.discount}}% Off</sup>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-cart-btn">
+                                    <a [routerLink]="['/product']" [queryParams]="{id:item.id}" class="product-btn">Add
+                                        To
+                                        Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--------------- products-sidebar-section-end--------------->
+
+
+<app-footer></app-footer>

@@ -1,0 +1,49 @@
+<!--------------- arrival-section--------------->
+<section class="product arrival">
+    <div class="container">
+        <div class="section-title">
+            @if (title=="Related Products") {
+            <h5>Related products</h5>
+            }
+            @else{
+            <h5>{{title}} Latest Products</h5>
+            <a [routerLink]="['/shop']" [queryParams]="{mc:title}" class="view">Shop Now</a>
+            }
+        </div>
+        <div class="arrival-section">
+            <div class="row g-5">
+                @for (item of data; track $index) {
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-wrapper" data-aos-duration="100">
+                        <div class="product-img">
+                            <img src="{{imageServerUrl}}/{{item.pic[0]}}" style="height: 300px;width: 100%;"
+                                alt="product-img">
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <h4 class="fs-4 mx-3">{{item.brand}}</h4>
+                            <h4 class="fs-4 mx-3">{{item.stock?`${item.stockQuantity} Left In Stock`:'Out Of Stock'}}
+                            </h4>
+                        </div>
+                        <div class="product-info text-center">
+                            <div class="product-description">
+                                <a [routerLink]="['/product']" [queryParams]="{id:item.id}"
+                                    class="product-details">{{item.name}}</a>
+                                <div class="fs-4 mt-2">
+                                    <del class="price-cut">&#8377;{{item.basePrice}}</del>
+                                    <span class="new-price">&#8377;{{item.finalPrice}}</span>
+                                    <sup class="fs-5">{{item.discount}}% Off</sup>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-cart-btn">
+                            <a [routerLink]="['/product']" [queryParams]="{id:item.id}" class="product-btn">Add To
+                                Cart</a>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+<!--------------- arrival-section-end--------------->

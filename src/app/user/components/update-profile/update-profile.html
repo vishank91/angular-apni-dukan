@@ -1,0 +1,46 @@
+<form [formGroup]="myForm" (submit)="postData()">
+    <div class="row">
+        <div class="col-lg-6 mb-3">
+            <label class="d-block">Full Name*</label>
+            <input type="text" name="name" formControlName="name" placeholder="Full Name"
+                [className]="name?.invalid && name?.touched?'border-danger':''">
+            @if(name?.invalid && name?.touched){
+            <p class="text-danger">Name Field is Mendatory</p>
+            }
+        </div>
+        <div class="col-lg-6 mb-3">
+            <label class="d-block">User Name*</label>
+            <input type="text" name="username" formControlName="username" placeholder="User Name"
+                [className]="username?.invalid && username?.touched?'border-danger':''">
+            @if(username?.invalid && username?.touched){
+            <p class="text-danger">User Name Field is Mendatory</p>
+            }
+            @if(errorMessage.show && errorMessage.username){
+            <p class="text-danger">{{errorMessage.username}}</p>
+            }
+        </div>
+        <div class="col-lg-6 mb-3">
+            <label class="d-block">Email Address*</label>
+            <input type="text" name="email" formControlName="email" placeholder="Email Address"
+                [className]="email?.invalid && email?.touched?'border-danger':''">
+            @if(email?.invalid && email?.touched){
+            <p class="text-danger">Email Address Field is Mendatory</p>
+            }
+            @if(errorMessage.show && errorMessage.email){
+            <p class="text-danger">{{errorMessage.email}}</p>
+            }
+        </div>
+        <div class="col-lg-6 mb-3">
+            <label class="d-block">Phone Number*</label>
+            <input type="text" name="phone" formControlName="phone" placeholder="Phone Number"
+                [className]="phone?.invalid && phone?.touched?'border-danger':''">
+            @if(phone?.invalid && phone?.touched){
+            <p class="text-danger">Phone Field is Mendatory</p>
+            }
+        </div>
+
+        <div class="col-12 my-3">
+            <button type="submit" class="btn btn-primary w-100 btn-lg myBackground p-3">Update</button>
+        </div>
+    </div>
+</form>

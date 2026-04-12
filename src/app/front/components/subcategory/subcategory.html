@@ -1,0 +1,21 @@
+<!--------------- category-section--------------->
+<section class="product-category mb-5">
+    <div class="container">
+        <div class="section-title">
+            <h5>Our Sub Categories</h5>
+        </div>
+        <div class="category-section">
+            @for (item of data; track $index) {
+            <div class="product-wrapper" data-aos-duration="100">
+                <div class="wrapper-img">
+                    <img src="{{imageServerUrl}}/{{item.pic}}" alt="dress">
+                </div>
+                <div class="wrapper-info">
+                    <a [routerLink]="['/shop']" [queryParams]="{mc:item.name}" class="wrapper-details">{{item.name}}</a>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</section>
+<!--------------- category-section-end--------------->

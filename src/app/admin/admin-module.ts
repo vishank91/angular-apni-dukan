@@ -1,0 +1,61 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { AdminRoutingModule } from './admin-routing-module';
+import { Sidebar } from './components/sidebar/sidebar';
+import { AdminHome } from './pages/admin-home/admin-home';
+import { FrontModule } from '../front/front-module';
+import { AdminMaincategory } from './pages/maincategory/admin-maincategory/admin-maincategory';
+import { AdminCreateMaincategory } from './pages/maincategory/admin-create-maincategory/admin-create-maincategory';
+import { AdminUpdateMaincategory } from './pages/maincategory/admin-update-maincategory/admin-update-maincategory';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AdminSubcategory } from './pages/subcategory/admin-subcategory/admin-subcategory';
+import { AdminCreateSubcategory } from './pages/subcategory/admin-create-subcategory/admin-create-subcategory';
+import { AdminUpdateSubcategory } from './pages/subcategory/admin-update-subcategory/admin-update-subcategory';
+import { AdminBrand } from './pages/brand/admin-brand/admin-brand';
+import { AdminCreateBrand } from './pages/brand/admin-create-brand/admin-create-brand';
+import { AdminUpdateBrand } from './pages/brand/admin-update-brand/admin-update-brand';
+import { AdminProduct } from './pages/product/admin-product/admin-product';
+import { AdminCreateProduct } from './pages/product/admin-create-product/admin-create-product';
+import { AdminUpdateProduct } from './pages/product/admin-update-product/admin-update-product';
+import { AdminFeature } from './pages/feature/admin-feature/admin-feature';
+import { AdminCreateFeature } from './pages/feature/admin-create-feature/admin-create-feature';
+import { AdminUpdateFeature } from './pages/feature/admin-update-feature/admin-update-feature';
+import { AdminFaq } from './pages/faq/admin-faq/admin-faq';
+import { AdminCreateFaq } from './pages/faq/admin-create-faq/admin-create-faq';
+import { AdminUpdateFaq } from './pages/faq/admin-update-faq/admin-update-faq';
+import { AdminSetting } from './pages/setting/admin-setting/admin-setting';
+
+
+@NgModule({
+  declarations: [
+    Sidebar,
+    AdminHome,
+    AdminMaincategory,
+    AdminCreateMaincategory,
+    AdminUpdateMaincategory,
+    AdminSubcategory,
+    AdminCreateSubcategory,
+    AdminUpdateSubcategory,
+    AdminBrand,
+    AdminCreateBrand,
+    AdminUpdateBrand,
+    AdminProduct,
+    AdminCreateProduct,
+    AdminUpdateProduct,
+    AdminFeature,
+    AdminCreateFeature,
+    AdminUpdateFeature,
+    AdminFaq,
+    AdminCreateFaq,
+    AdminUpdateFaq,
+    AdminSetting
+  ],
+  imports: [
+    CommonModule,
+    AdminRoutingModule,
+    FrontModule,
+    ReactiveFormsModule
+  ]
+})
+export class AdminModule { }

@@ -1,0 +1,64 @@
+<app-navbar></app-navbar>
+
+<!--------------- hero-section --------------->
+<section id="hero" class="hero">
+    <div class="swiper hero-swiper" #swiperRoot>
+        <div class="swiper-wrapper hero-wrapper">
+            <div class="swiper-slide hero-slider-one">
+                <div class="container">
+                    <div class="col-lg-6">
+                        <div class="wrapper-section">
+                            <div class="wrapper-info">
+                                <h5 class="wrapper-subtitle">UP TO <span class="wrapper-inner-title">Upto 90%</span> OFF
+                                </h5>
+                                <h3 class="wrapper-details">Classic menswear essentials designed for comfort, style, and
+                                    confidence.”</h3>
+                                <a [routerLink]="['/shop']" [queryParams]="{mc:'Male'}" class="shop-btn">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide hero-slider-two">
+                <div class="container">
+                    <div class="col-lg-6">
+                        <div class="wrapper-section">
+                            <div class="wrapper-info">
+                                <h5 class="wrapper-subtitle">UP TO <span class="wrapper-inner-title">Upto 90%</span> OFF
+                                </h5>
+                                <h3 class="wrapper-details">Beautiful fits and timeless fashion for confident modern women.</h3>
+                                <a [routerLink]="['/shop']" [queryParams]="{mc:'Female'}" class="shop-btn">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide hero-slider-three">
+                <div class="container">
+                    <div class="col-lg-6">
+                        <div class="wrapper-section">
+                            <div class="wrapper-info">
+                                <h5 class="wrapper-subtitle">UP TO <span class="wrapper-inner-title">Upto 90%</span> OFF
+                                </h5>
+                                <h1 class="wrapper-details">Bright styles designed for active kids and happy moments.</h1>
+                                <a [routerLink]="['/shop']" [queryParams]="{mc:'Female'}" class="shop-btn">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</section>
+<!--------------- hero-section-end --------------->
+
+<app-maincategory></app-maincategory>
+<app-subcategory></app-subcategory>
+<app-brand></app-brand>
+<app-products></app-products>
+@for (item of maincategory; track $index) {
+    <app-product-slider [title]="item.name" [data]="filter(item.name)"></app-product-slider>
+}
+
+<app-footer></app-footer>

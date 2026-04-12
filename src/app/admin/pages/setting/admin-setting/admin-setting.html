@@ -1,0 +1,88 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid my-3 ">
+    <div class="blog">
+        <div class="row">
+            <div class="col-md-3">
+                <app-sidebar></app-sidebar>
+            </div>
+            <div class="col-md-9">
+                <h6 class="fs-2 myBackground text-center p-2 text-light">Update Setting Record</h6>
+                <form [formGroup]="myForm" (submit)="postData()">
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label>Site Name</label>
+                            <input type="text" name="siteName" formControlName="siteName"
+                                class="form-control myBorderColor" placeholder="Site Name">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label>Email Address</label>
+                            <input type="email" name="email" formControlName="email" class="form-control myBorderColor"
+                                placeholder="Email Address">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label>Phone Number</label>
+                            <input type="text" name="phone" formControlName="phone" class="form-control myBorderColor"
+                                placeholder="Phone Number">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label>Whatsapp Number</label>
+                            <input type="text" name="whatsapp" formControlName="whatsapp"
+                                class="form-control myBorderColor" placeholder="Whatsapp Number">
+                        </div>
+
+                        <div class="col-12 mb-3">
+                            <label>Address</label>
+                            <textarea name="address" formControlName="address" class="form-control myBorderColor"
+                                placeholder="Address"></textarea>
+                        </div>
+
+                        <div class="col-12 mb-3">
+                            <label>Map1</label>
+                            <input type="url" name="map1" formControlName="map1" class="form-control myBorderColor"
+                                placeholder="Google Map Address">
+                        </div>
+
+                        <div class="col-12 mb-3">
+                            <label>Map2</label>
+                            <input type="url" name="map2" formControlName="map2" class="form-control myBorderColor"
+                                placeholder="Google Map Address">
+                        </div>
+
+                        <div class="col-12 mb-3">
+                            <label>Facebook Profile Page URL</label>
+                            <input type="url" name="facebook" formControlName="facebook"
+                                class="form-control myBorderColor" placeholder="Facebook Profile Page URL">
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label>Twitter Profile Page URL</label>
+                            <input type="url" name="twitter" formControlName="twitter"
+                                class="form-control myBorderColor" placeholder="Twitter Profile Page URL">
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label>Linkedin Profile Page URL</label>
+                            <input type="url" name="linkedin" formControlName="linkedin"
+                                class="form-control myBorderColor" placeholder="Linkedin Profile Page URL">
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label>Instagram Profile Page URL</label>
+                            <input type="url" name="instagram" formControlName="instagram"
+                                class="form-control myBorderColor" placeholder="Instagram Profile Page URL">
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label>Youtube Profile Page URL</label>
+                            <input type="url" name="youtube" formControlName="youtube"
+                                class="form-control myBorderColor" placeholder="Youtube Profile Page URL">
+                        </div>
+
+                        <div class="col-12 mb-3">
+                            <button type="submit" class="shop-btn w-100">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid my-3 ">
+    <div class="blog">
+        <div class="row">
+            <div class="col-md-3">
+                <app-sidebar></app-sidebar>
+            </div>
+            <div class="col-md-9">
+                <h6 class="fs-2 myBackground text-center p-2 text-light">Admin Profile</h6>
+                <table class="table table-bordred">
+                    <tbody>
+                        <tr>
+                            <th>Name</th>
+                            <td>{{data.name}}</td>
+                        </tr>
+                        <tr>
+                            <th>User Name</th>
+                            <td>{{data.username}}</td>
+                        </tr>
+                        <tr>
+                            <th>Email Address</th>
+                            <td>{{data.email}}</td>
+                        </tr>
+                        <tr>
+                            <th>Phone</th>
+                            <td>{{data.phone}}</td>
+                        </tr>
+                        <tr>
+                            <th>Role</th>
+                            <td>{{data.role}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

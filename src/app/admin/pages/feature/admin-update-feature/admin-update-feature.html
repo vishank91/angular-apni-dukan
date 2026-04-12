@@ -1,0 +1,67 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid my-3 ">
+    <div class="blog">
+        <div class="row">
+            <div class="col-md-3">
+                <app-sidebar></app-sidebar>
+            </div>
+            <div class="col-md-9">
+                <h6 class="fs-2 myBackground text-center p-2 text-light">Create Feature
+                    <a routerLink="/admin/features"><i class="bi bi-arrow-left fs-2 text-light float-end"></i></a>
+                </h6>
+                <form [formGroup]="myForm" (submit)="postData()">
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <label>Name*</label>
+                            <input type="text" name="name" (keyup)="setErrorMessage()" formControlName="name"
+                                [ngClass]="(name.touched && name.invalid) || nameError?'border-danger':'myBorderColor'"
+                                class="form-control" placeholder="Feature Name">
+                            @if (name.invalid && name.touched) {
+                            <p class="text-danger">Name Field is Mendatory and Its Length Msut Be 3-30 Characters</p>
+                            }
+                            @if (nameError) {
+                            <p class="text-danger">{{nameError}}</p>
+                            }
+                        </div>
+
+                        <div class="col-12 mb-3">
+                            <label>Short Description*</label>
+                            <textarea type="text" name="shortDescription" (keyup)="setErrorMessage()"
+                                formControlName="shortDescription" rows="3"
+                                [ngClass]="(shortDescription.touched && shortDescription.invalid) || nameError?'border-danger':'myBorderColor'"
+                                class="form-control" placeholder="Short Description"></textarea>
+                            @if (shortDescription.invalid && shortDescription.touched) {
+                            <p class="text-danger">Feature Short Description Field is Mendatory</p>
+                            }
+                        </div>
+
+                        <div class="col-lg-6 mb-3">
+                            <label>Icon*</label>
+                            <input type="text" name="icon" (keyup)="setErrorMessage()" formControlName="icon"
+                                [ngClass]="(icon.touched && icon.invalid) || nameError?'border-danger':'myBorderColor'"
+                                class="form-control" placeholder="Feature Icon Tag Like <i class='bi bi-list'></i>">
+                            @if (icon.invalid && icon.touched) {
+                            <p class="text-danger">Feature Icons Field is Mendatory</p>
+                            }
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label>Status*</label>
+                            <select name="status" formControlName="status" class="form-select myBorderColor">
+                                <option value="1">Active</option>
+                                <option value="0">Inactive</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12 my-3">
+                            <button type="submit" [disabled]="myForm.invalid"
+                                class="shop-btn myBackground btn-lg p-3 w-100">Create</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

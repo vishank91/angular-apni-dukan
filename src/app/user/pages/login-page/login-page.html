@@ -1,0 +1,49 @@
+<app-navbar></app-navbar>
+<app-breadcrum title="Login To Your Account"></app-breadcrum>
+
+<!--------------- login-section--------------->
+<section class="login account footer-padding">
+    <div class="container">
+        <div class="login-section">
+            <div class="review-form">
+                <h5 class="comment-title">Login To Account</h5>
+                <form [formGroup]="myForm" (submit)="postData()">
+                    <div class="row">
+                        <div class="col-lg-6 mb-3">
+                            <label class="d-block">User Name*</label>
+                            <input type="text" name="username" formControlName="username" placeholder="User Name"
+                                [className]="username?.invalid && username?.touched?'border-danger':''">
+                            @if(username?.invalid && username?.touched){
+                            <p class="text-danger">User Name Field is Mendatory</p>
+                            }
+                            @if(errorMessage.show && errorMessage.username){
+                            <p class="text-danger">{{errorMessage.username}}</p>
+                            }
+                        </div>
+
+                        <div class="col-lg-6 mb-3">
+                            <label class="d-block">Password*</label>
+                            <input type="password" name="password" formControlName="password" placeholder="Password"
+                                [className]="password?.invalid && password?.touched?'border-danger':''">
+                            @if(password?.invalid && password?.touched){
+                            <p class="text-danger">Password Field is Mendatory</p>
+                            }
+                        </div>
+
+                        <div class="col-12 my-3">
+                            <button type="submit" class="btn btn-primary w-100 btn-lg myBackground p-4">Login</button>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a routerLink="#" class="fs-4 myTextColor">Forget Password?</a>
+                        <a routerLink="/user/signup" class="fs-4 myTextColor">Doesn't Have an Account? Signup</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!--------------- login-section-end --------------->
+
+
+<app-footer></app-footer>

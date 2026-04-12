@@ -1,0 +1,158 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid my-3 ">
+    <div class="blog">
+        <div class="row">
+            <div class="col-lg-3 mb-3">
+                <app-sidebar></app-sidebar>
+            </div>
+            <div class="col-lg-9">
+                <h6 class="fs-2 myBackground text-center p-2 text-light">Create Product
+                    <a routerLink="/admin/product"><i class="bi bi-arrow-left fs-2 text-light float-end"></i></a>
+                </h6>
+                <form [formGroup]="myForm" (submit)="postData()">
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <label>Name*</label>
+                            <input type="text" name="name" (keyup)="setErrorMessage()" formControlName="name"
+                                [ngClass]="(name.touched && name.invalid) || error.name?'border-danger':'myBorderColor'"
+                                class="form-control" placeholder="Product Name">
+                            @if (name.invalid && name.touched) {
+                            <p class="text-danger">Name Field is Mendatory and Its Length Msut Be 3-30 Characters</p>
+                            }
+                            @if (error.show && error.name) {
+                            <p class="text-danger">{{error.name}}</p>
+                            }
+                        </div>
+
+                        <div class="col-lg-3 mb-3">
+                            <label>Maincategory*</label>
+                            <select formControlName="maincategory" class="form-select myBorderColor">
+                                @for (item of maincategory; track $index) {
+                                <option>{{item.name}}</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-lg-3 mb-3">
+                            <label>Subcategory*</label>
+                            <select formControlName="subcategory" class="form-select myBorderColor">
+                                @for (item of subcategory; track $index) {
+                                <option>{{item.name}}</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-lg-3 mb-3">
+                            <label>Brand*</label>
+                            <select formControlName="brand" class="form-select myBorderColor">
+                                @for (item of brand; track $index) {
+                                <option>{{item.name}}</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-lg-3 mb-3">
+                            <label>Stock*</label>
+                            <select formControlName="stock" class="form-select myBorderColor">
+                                <option value="1">In Stock</option>
+                                <option value="0">Out of Stock</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12 mb-3">
+                            <label>Color*</label>
+                            <div class="myBorderColor rounded">
+                                <div class="row">
+                                    @for (item of colors; track $index) {
+                                    <div class="col-xxl-2 col-lg-3 col-lg-4 col-6 my-3">
+                                        <input class="ms-2" (change)="(getInputCheckbox('color',item))" type="checkbox">
+                                        <label class="ms-3">{{item}}</label>
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                            @if (error.show && error.color) {
+                            <p class="text-danger">{{error.color}}</p>
+                            }
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label>size*</label>
+                            <div class="myBorderColor rounded">
+                                <div class="row">
+                                    @for (item of sizes; track $index) {
+                                    <div class="col-xxl-2 col-lg-3 col-lg-4 col-6 my-3">
+                                        <input class="ms-2" (change)="(getInputCheckbox('size',item))" type="checkbox">
+                                        <label class="ms-3">{{item}}</label>
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                            @if (error.show && error.size) {
+                            <p class="text-danger">{{error.size}}</p>
+                            }
+                        </div>
+
+                        <div class="col-lg-6 mb-3">
+                            <label>Base Price*</label>
+                            <input type="text" name="basePrice" formControlName="basePrice"
+                                [ngClass]="(basePrice.touched && basePrice.invalid)?'border-danger':'myBorderColor'"
+                                class="form-control" placeholder="Product Base Price">
+                            @if (basePrice.invalid && basePrice.touched) {
+                            <p class="text-danger">Base Price is Required</p>
+                            }
+                        </div>
+
+                        <div class="col-lg-6 mb-3">
+                            <label>Discount*</label>
+                            <input type="text" name="discount" formControlName="discount"
+                                [ngClass]="(discount.touched && discount.invalid)?'border-danger':'myBorderColor'"
+                                class="form-control" placeholder="Product Discount">
+                            @if (discount.invalid && discount.touched) {
+                            <p class="text-danger">Discount is Required</p>
+                            }
+                        </div>
+
+                        <div class="col-12 mb-3">
+                            <label>Description</label>
+                            <div class="myBorderColor rounded">
+                                <div class="rtediv"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 mb-3">
+                            <label>stockQuantity*</label>
+                            <input type="text" name="stockQuantity" (keyup)="setErrorMessage()"
+                                formControlName="stockQuantity"
+                                [ngClass]="(stockQuantity.touched && stockQuantity.invalid)?'border-danger':'myBorderColor'"
+                                class="form-control" placeholder="Product Stock Quantity">
+                            @if (stockQuantity.invalid && stockQuantity.touched) {
+                            <p class="text-danger">Product Stock Quantity is Required</p>
+                            }
+                        </div>
+
+                        <div class="col-lg-4 mb-3">
+                            <label>Pic*</label>
+                            <input type="file" name="pic" multiple (change)="getInputFile($event)"
+                                [ngClass]="error.pic?'border-danger':'myBorderColor'" class="form-control">
+                            @if (error.show && error.pic) {
+                            <p class="text-danger">{{error.pic}}</p>
+                            }
+                        </div>
+                        <div class="col-lg-4 mb-3">
+                            <label>Status*</label>
+                            <select name="status" formControlName="status" class="form-select myBorderColor">
+                                <option value="1">Active</option>
+                                <option value="0">Inactive</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12 my-3">
+                            <button type="submit" [disabled]="myForm.invalid"
+                                class="shop-btn myBackground btn-lg p-3 w-100">Create</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

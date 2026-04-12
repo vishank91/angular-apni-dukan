@@ -1,0 +1,77 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid my-3 ">
+    <div class="blog">
+        <div class="row">
+            <div class="col-md-3">
+                <app-sidebar></app-sidebar>
+            </div>
+            <div class="col-md-9">
+                <h6 class="fs-2 myBackground text-center p-2 text-light">Product
+                    <a routerLink="/admin/product/create"><i class="bi bi-plus fs-2 text-light float-end"></i></a>
+                </h6>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Maincategory</th>
+                                <th>Subcategory</th>
+                                <th>Brand</th>
+                                <th>Color</th>
+                                <th>Size</th>
+                                <th>Base Price</th>
+                                <th>Discount</th>
+                                <th>Final Price</th>
+                                <th>Stock</th>
+                                <th>Stock Quantity</th>
+                                <th>Pic</th>
+                                <th>Status</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (item of data; track $index) {
+                            <tr>
+                                <td>{{item.id}}</td>
+                                <td>{{item.name}}</td>
+                                <td>{{item.maincategory}}</td>
+                                <td>{{item.subcategory}}</td>
+                                <td>{{item.brand}}</td>
+                                <td>{{item.color}}</td>
+                                <td>{{item.size}}</td>
+                                <td>&#8377;{{item.basePrice}}</td>
+                                <td>{{item.discount}}% Off</td>
+                                <td>&#8377;{{item.finalPrice}}</td>
+                                <td>{{item.stock?"In Stock":"Out Of Stock"}}</td>
+                                <td>{{item.stockQuantity}}</td>
+                                <td>
+                                    <div style="width:250px">
+                                        @for (pic of item.pic; track $index) {
+                                        <a href="{{imageServerUrl}}/{{pic}}" target="_blank">
+                                            <img src="{{imageServerUrl}}/{{pic}}" height="70px" width="70px" class="m-1"
+                                                alt="">
+                                        </a>
+                                        }
+                                    </div>
+                                </td>
+                                <td>{{item.status?"Active":"Inactive"}}</td>
+                                <td><a [routerLink]="['/admin/product/update']" [queryParams]="{id:item.id}"
+                                        class="btn btn-primary btn-lg myBackground"><i
+                                            class="bi bi-pencil fs-3"></i></a>
+                                </td>
+                                <td><button (click)="deleteRecord(item.id)" class="btn btn-danger p-2"><i
+                                            class="bi bi-x fs-3"></i></button></td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
