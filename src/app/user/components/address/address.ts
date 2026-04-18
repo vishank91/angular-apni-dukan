@@ -12,6 +12,7 @@ export class Address {
   data: any = {}
   showModal: boolean = false
   option: string = "Create"
+  index: any = ""
 
   myForm = new FormGroup({
     name: new FormControl("", Validators.required),
@@ -49,6 +50,23 @@ export class Address {
     })
   }
 
+  updateRecord(index: any) {
+    this.showModal = true
+    this.option = "Update"
+
+    let address = this.data.address[index]
+    this.index = index
+    this.myForm.patchValue({
+      name: address.name,
+      email: address.email,
+      phone: address.phone,
+      address: address.address,
+      pin: address.pin,
+      city: address.city,
+      state: address.state,
+    })
+  }
+
   setShowModal() {
     this.showModal = false
   }
@@ -63,12 +81,23 @@ export class Address {
       city: this.myForm.value.city,
       state: this.myForm.value.state
     }
-    if (this.option === "Create") {
+    if (this.option === "Create")
       this.data = { ...this.data, address: this.data.address ? [...this.data.address, item] : [item] }
+    else {
+      this.data.address[this.index] = { ...item }
+      this.data = { ...this.data }
     }
+
     this.dataService.updateUser(this.data).subscribe((response: any) => {
 
     })
     this.showModal = false
+  }
+
+  deleteRecord(index: any) {
+    if (typeof window !== "undefined" && window.confirm("Are You Sure to Delete That Record : ")) {
+      this.data.address.splice(index, 1)
+      this.dataService.updateUser(this.data).subscribe((response: any) => { })
+    }
   }
 }

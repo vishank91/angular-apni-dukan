@@ -1,8 +1,9 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../../services/data-service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { environment } from '../../../../environments/environment';
+import { StorageService } from '../../../services/storage-service';
 @Component({
   selector: 'app-product',
   standalone: false,
@@ -21,7 +22,14 @@ export class Product {
     color: '',
     size: ''
   }
-  constructor(private activatedRoutes: ActivatedRoute, private dataService: DataService, private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef) { }
+  constructor(
+    private activatedRoutes: ActivatedRoute,
+    private dataService: DataService,
+    private sanitizer: DomSanitizer,
+    private cdr: ChangeDetectorRef,
+    private storage: StorageService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.activatedRoutes.queryParams.subscribe(((response: any) => {
@@ -39,7 +47,6 @@ export class Product {
   }
 
   changeSelected(key: any, value: any) {
-    console.log(key, value)
     this.selected = { ...this.selected, [key]: value }
   }
 
@@ -48,5 +55,49 @@ export class Product {
       this.selected = { ...this.selected, qty: this.selected.qty + 1 }
     else if (option === "dec" && this.selected.qty > 1)
       this.selected = { ...this.selected, qty: this.selected.qty - 1 }
+  }
+
+  addToCart() {
+    this.dataService.getCart().subscribe((response: any) => {
+      let item = response.find((x: any) => x.user == this.storage.getStorage().userid && x.product == this.data.id)
+      if (!item) {
+        item = {
+          user: this.storage.getStorage().userid,
+          product: this.data.id,
+          name: this.data.name,
+          price: this.data.finalPrice,
+          pic: this.data.pic[0],
+          brand: this.data.brand,
+          stockQuantity: this.data.stockQuantity,
+
+          qty: this.selected.qty,
+          color: this.selected.color,
+          size: this.selected.size,
+          total: this.selected.qty * this.data.finalPrice
+        }
+        this.dataService.createCart(item).subscribe((response: any) => {
+        })
+      }
+      this.router.navigate(['/user/cart'])
+    })
+  }
+  addToWishlist() {
+    this.dataService.getWishlist().subscribe((response: any) => {
+      let item = response.find((x: any) => x.user == this.storage.getStorage().userid && x.product == this.data.id)
+      if (!item) {
+        item = {
+          user: this.storage.getStorage().userid,
+          product: this.data.id,
+          name: this.data.name,
+          price: this.data.finalPrice,
+          pic: this.data.pic[0],
+          brand: this.data.brand,
+           stockQuantity: this.data.stockQuantity,
+        }
+        this.dataService.createWishlist(item).subscribe((response: any) => {
+        })
+      }
+      this.router.navigate(['/user'])
+    })
   }
 }

@@ -1,1 +1,38 @@
-<p>wishlist works!</p>
+@if (data.length) {
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>Stock Quantity</th>
+            <th>Price</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (item of data; track $index) {
+        <tr>
+            <td>
+                <a href="{{imageServerUrl}}/{{item.pic}}" target="_blank">
+                    <img src="{{imageServerUrl}}/{{item.pic}}" height="50px" width="80x" alt="">
+                </a>
+            </td>
+            <td>{{item.name}}</td>
+            <td>{{item.brand}}</td>
+            <td>{{item.stockQuantity}}</td>
+            <td>&#8377;{{item.price}}</td>
+            <td><a [routerLink]="['/product']" [queryParams]="{id:item.product}" class="btn btn-success"><i class="bi bi-cart fs-3"></i></a></td>
+            <td><button class="btn btn-danger" (click)="deleteRecord(item.id)"><i class="bi bi-x fs-3"></i></button></td>
+        </tr>
+        }
+    </tbody>
+</table>
+}
+@else {
+<div class="card p-5">
+    <p class="text-center fs-1 mb-3">No Items in Wishlist</p>
+    <a routerLink="/shop" class="shop-btn w-25 m-auto">Shop Now</a>
+</div>
+}

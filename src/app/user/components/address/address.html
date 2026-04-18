@@ -11,8 +11,8 @@
 
         <div class="position-absolute end-0">
             <div class="btn-group">
-            <button class="btn btn-primary btn-lg">Edit</button>
-            <button class="btn btn-danger btn-lg">Delete</button>
+            <button class="btn btn-primary btn-lg" (click)="updateRecord($index)">Edit</button>
+            <button class="btn btn-danger btn-lg" (click)="deleteRecord($index)">Delete</button>
         </div>
         </div>
     </div>
