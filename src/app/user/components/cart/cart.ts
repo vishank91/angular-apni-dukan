@@ -45,8 +45,28 @@ export class Cart {
     if (window && window.confirm("Are Your Sure to Delete That Record : ")) {
       this.dataService.deleteCart(id).subscribe((response) => {
         this.data = this.data.filter((x: any) => x.id !== id)
-        this.cdr.detectChanges()
+        this.calculate(this.data)
       })
     }
+  }
+
+  updateRecord(option: string, id: any) {
+    let item = this.data.find((x: any) => x.id === id)
+    let index = this.data.findIndex((x: any) => x.id === id)
+
+    if ((option === "Dec" && item.qty === 1) || (option === "Inc" && item.qty === item.stockQuantity))
+      return
+    else if (option === "Dec") {
+      item['qty'] = item['qty'] - 1
+      item['total'] = item['total'] - item['price']
+    }
+    else {
+      item['qty'] = item['qty'] + 1
+      item['total'] = item['total'] + item['price']
+    }
+    this.dataService.updateCart(item).subscribe((response:any)=>{})
+    
+    this.data[index] = { ...item }
+    this.calculate(this.data)
   }
 }

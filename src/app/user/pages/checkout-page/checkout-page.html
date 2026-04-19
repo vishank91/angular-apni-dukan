@@ -1,13 +1,100 @@
 <app-navbar></app-navbar>
 <app-breadcrum title="Your Cart"></app-breadcrum>
 
-<div class="container my-3">
+<div class="container my-3 footer-padding">
+    @if (data.length) {
     <div class="row">
-        <div class="col-md-6"></div>
         <div class="col-md-6">
-            <app-cart></app-cart>
+            <h5 class="text-center fs-2">Choose Delivery Address and Payment Mode</h5>
+            @for (item of user.address; track $index) {
+            <div class="card p-5 mb-2" (click)="updateSelected('deliveryAddress',item)">
+                <p class="text-dark">{{item.name}}</p>
+                <p class="text-dark">{{item.phone}},{{item.email}}</p>
+                <p class="text-dark">{{item.address}}</p>
+                <p class="text-dark">{{item.pin}},{{item.city}},{{item.state}}</p>
+
+                @if (selected.deliveryAddress?.address===item.address) {
+                <i class="bi bi-check fs-1 position-absolute end-0 pe-4 top-0"></i>
+                }
+            </div>
+            }
+
+            <div class="d-flex">
+                <div class="w-50 card p-5 mb-3" (click)="updateSelected('paymentMode','COD')">
+                    <p class="text-dark">Cash On Delivery</p>
+                    @if (selected.paymentMode==="COD") {
+                    <i class="bi bi-check fs-1 position-absolute end-0 pe-4 top-0"></i>
+                    }
+                </div>
+                <div class="w-50 card p-5 mb-3" (click)="updateSelected('paymentMode','Net Banking')">
+                    <p class="text-dark">Net Banking/UPI/Card</p>
+                    @if (selected.paymentMode==="Net Banking") {
+                    <i class="bi bi-check fs-1 position-absolute end-0 pe-4 top-0"></i>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h5 class="text-center fs-2">Items In Cart</h5>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Brand</th>
+                            <th>Color</th>
+                            <th>Size</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (item of data; track $index) {
+                        <tr>
+                            <td>{{item.name}}</td>
+                            <td>{{item.brand}}</td>
+                            <td>{{item.color}}</td>
+                            <td>{{item.size}}</td>
+                            <td>&#8377;{{item.price}}</td>
+                            <td>{{item.qty}}</td>
+                            <td>&#8377;{{item.total}}</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Subtotal</th>
+                        <td>&#8377;{{subtotal}}</td>
+                    </tr>
+                    <tr>
+                        <th>Shipping</th>
+                        <td>&#8377;{{shipping}}</td>
+                    </tr>
+                    <tr>
+                        <th>Total</th>
+                        <td>&#8377;{{total}}</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">
+                            <button class="btn btn-primary myBackground w-100 text-light p-2 fs-3"
+                                (click)="placeOrder()">Place Order</button>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+    }
+    @else {
+    <div class="card p-5">
+        <p class="text-center fs-1 mb-3">No Items in Cart</p>
+        <a routerLink="/shop" class="shop-btn w-25 m-auto">Shop Now</a>
+    </div>
+    }
 </div>
 
 <app-footer></app-footer>
