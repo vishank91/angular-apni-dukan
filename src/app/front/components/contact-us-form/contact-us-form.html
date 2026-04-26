@@ -1,24 +1,58 @@
-<div class="review-form">
-    <h5 class="comment-title">Have Any Question</h5>
-    <div class=" account-inner-form">
-        <div class="review-form-name">
-            <label for="fname" class="form-label">Name*</label>
-            <input type="text" id="fname" class="form-control" placeholder="Name">
+<div class="card p-3">
+    <h5>Do You Have Any Query?</h5>
+    @if (successMessage) {
+    <p class="text-success">{{successMessage}}</p>
+    }
+    <form [formGroup]="myForm" (submit)="postData()">
+        <div class="row my-3">
+            <div class="col-12 mb-3">
+                <label>Name*</label>
+                <input type="text" name="name" formControlName="name" placeholder="Full Name"
+                    class="form-control border border-2" [ngClass]="name?.touched && name?.invalid?'border-danger':''">
+                @if (name?.touched && name?.invalid) {
+                <p class="text-danger">Name Field is Mendatory</p>
+                }
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Email*</label>
+                <input type="text" name="email" formControlName="email" placeholder="Email Address"
+                    class="form-control border border-2"
+                    [ngClass]="email?.touched && email?.invalid?'border-danger':''">
+                @if (email?.touched && email?.invalid) {
+                <p class="text-danger">Email Address Field is Mendatory</p>
+                }
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Phone Number*</label>
+                <input type="text" name="phone" formControlName="phone" placeholder="Phone Number"
+                    class="form-control border border-2"
+                    [ngClass]="phone?.touched && phone?.invalid?'border-danger':''">
+                @if (phone?.touched && phone?.invalid) {
+                <p class="text-danger">Phone Number Field is Mendatory</p>
+                }
+            </div>
+            <div class="col-12 mb-3">
+                <label>Subject*</label>
+                <input type="text" name="subject" formControlName="subject" placeholder="Subject"
+                    class="form-control border border-2"
+                    [ngClass]="subject?.touched && subject?.invalid?'border-danger':''">
+                @if (subject?.touched && subject?.invalid) {
+                <p class="text-danger">Subject Field is Mendatory</p>
+                }
+            </div>
+            <div class="col-12 mb-3">
+                <label>Message*</label>
+                <textarea name="message" formControlName="message" placeholder="Message"
+                    class="form-control border border-2"
+                    [ngClass]="message?.touched && message?.invalid?'border-danger':''" rows="5"></textarea>
+                @if (message?.touched && message?.invalid) {
+                <p class="text-danger">Message Field is Mendatory</p>
+                }
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary myBackground w-100 p-3 fs-3"
+                    [disabled]="myForm.invalid">Submit</button>
+            </div>
         </div>
-        <div class="review-form-name">
-            <label for="email" class="form-label">Email*</label>
-            <input type="email" id="email" class="form-control" placeholder="user@gmail.com">
-        </div>
-        <div class="review-form-name">
-            <label for="subject" class="form-label">Subject*</label>
-            <input type="text" id="subject" class="form-control" placeholder="Subject">
-        </div>
-    </div>
-    <div class="review-textarea">
-        <label for="floatingTextarea">Massage*</label>
-        <textarea class="form-control" placeholder="Write Massage..........." id="floatingTextarea" rows="3"></textarea>
-    </div>
-    <div class="login-btn">
-        <a href="#" class="shop-btn">Send Now</a>
-    </div>
+    </form>
 </div>

@@ -1,0 +1,47 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid my-3 ">
+    <div class="blog">
+        <div class="row">
+            <div class="col-md-3">
+                <app-sidebar></app-sidebar>
+            </div>
+            <div class="col-md-9">
+                <h6 class="fs-2 myBackground text-center p-2 text-light">Checkout</h6>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Buyer</th>
+                                <th>Order Status</th>
+                                <th>Payment Mode</th>
+                                <th>Payment Status</th>
+                                <th>Total</th>
+                                <th>Date</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (item of data; track $index) {
+                            <tr>
+                                <td>{{item.id}}</td>
+                                <td>{{item.deliveryAddress.name}},{{item.deliveryAddress.city}}</td>
+                                <td>{{item.orderStatus}}</td>
+                                <td>{{item.paymentMode}}</td>
+                                <td>{{item.paymentStatus}}</td>
+                                <td>&#8377;{{item.total}}</td>
+                                <td>{{item.date|date:"short"}}</td>
+                                <td><a [routerLink]="['/admin/checkout/show']" [queryParams]="{id:item.id}"
+                                        class="btn btn-primary"><i class="bi bi-eye fs-3"></i></a></td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

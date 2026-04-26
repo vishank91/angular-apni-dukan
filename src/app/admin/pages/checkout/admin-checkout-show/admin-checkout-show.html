@@ -1,0 +1,135 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid my-3 ">
+    <div class="blog">
+        <div class="row">
+            <div class="col-md-3">
+                <app-sidebar></app-sidebar>
+            </div>
+            <div class="col-md-9">
+                <h6 class="fs-2 myBackground text-center p-2 text-light">Checkout Query</h6>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <th>Order Id</th>
+                                <td>{{data.id}}</td>
+                            </tr>
+                            <tr>
+                                <th>Buyer</th>
+                                <td>
+                                    {{data.deliveryAddress.name}}<br>
+                                    {{data.deliveryAddress.phone}},{{data.deliveryAddress.email}},<br>
+                                    {{data.deliveryAddress.address}},<br>
+                                    {{data.deliveryAddress.pin}},{{data.deliveryAddress.city}},{{data.deliveryAddress.state}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Order Status</th>
+                                <td>{{data.orderStatus}}
+
+                                    @if(data.orderStatus!=="Delivered"){
+                                        <select name="orderStatus" (change)="getInput($event)" [value]="orderStatus" class="border border-3 form-select mt-3">
+                                            <option>Order Has Been Placed</option>
+                                            <option>Order Is Packed</option>
+                                            <option>Order Is Ready to Ship</option>
+                                            <option>Order Is Shipped</option>
+                                            <option>Order Is In Transit</option>
+                                            <option>Order Reached at the Final Delivery Station</option>
+                                            <option>Order Out For Delivery</option>
+                                            <option>Delivered</option>
+                                        </select>
+                                    }
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Payment Mode</th>
+                                <td>{{data.paymentMode}}</td>
+                            </tr>
+                            <tr>
+                                <th>Payment Status</th>
+                                <td>{{data.paymentStatus}}
+                                     @if(data.paymentStatus!=="Done"){
+                                        <select name="paymentStatus" (change)="getInput($event)" [value]="paymentStatus" class="border border-3 form-select mt-3">
+                                            <option>Pending</option>
+                                            <option>Done</option>
+                                        </select>
+                                    }
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Subtotal</th>
+                                <td>&#8377;{{data.subtotal}}</td>
+                            </tr>
+                            <tr>
+                                <th>Shipping</th>
+                                <td>&#8377;{{data.shipping}}</td>
+                            </tr>
+                            <tr>
+                                <th>Total</th>
+                                <td>&#8377;{{data.total}}</td>
+                            </tr>
+                            <tr>
+                                <th>RPPID</th>
+                                <td>{{data.rppid}}</td>
+                            </tr>
+                            <tr>
+                                <th>Date</th>
+                                <td>{{data.date|date:"medium"}}</td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    @if (data.orderStatus!=="Delivered" || data.paymentSattys!=="Done") {
+                                    <button (click)="updateRecord()"
+                                        class="btn btn-primary myBackground w-100 p-2 fs-4">Update Record
+                                        Status</button>
+                                    }
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h5 class="fs-3">Products in This Order</h5>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Name</th>
+                                    <th>Brand</th>
+                                    <th>Color</th>
+                                    <td>Size</td>
+                                    <th>Stock Quantity</th>
+                                    <th>Price</th>
+                                    <th>Qty</th>
+                                    <th>Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (p of data?.products; track $index) {
+                                <tr>
+                                    <td>
+                                        <a href="{{imageServerUrl}}/{{p.pic}}" target="_blank">
+                                            <img src="{{imageServerUrl}}/{{p.pic}}" height="50px" width="80x" alt="">
+                                        </a>
+                                    </td>
+                                    <td>{{p.name}}</td>
+                                    <td>{{p.brand}}</td>
+                                    <td>{{p.color}}</td>
+                                    <td>{{p.size}}</td>
+                                    <td>{{p.stockQuantity}}</td>
+                                    <td>&#8377;{{p.price}}</td>
+                                    <td>{{p.qty}}</td>
+                                    <td>&#8377;{{p.total}}</td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

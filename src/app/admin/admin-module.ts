@@ -25,6 +25,14 @@ import { AdminFaq } from './pages/faq/admin-faq/admin-faq';
 import { AdminCreateFaq } from './pages/faq/admin-create-faq/admin-create-faq';
 import { AdminUpdateFaq } from './pages/faq/admin-update-faq/admin-update-faq';
 import { AdminSetting } from './pages/setting/admin-setting/admin-setting';
+import { AdminNewsletter } from './pages/newsletter/admin-newsletter/admin-newsletter';
+import { AdminContactUs } from './pages/contactus/admin-contact-us/admin-contact-us';
+import { AdminContactUsShow } from './pages/contactus/admin-contact-us-show/admin-contact-us-show';
+import { AdminCheckout } from './pages/checkout/admin-checkout/admin-checkout';
+import { AdminCheckoutShow } from './pages/checkout/admin-checkout-show/admin-checkout-show';
+import { AdminUser } from './pages/user/admin-user/admin-user';
+import { AdminUserCreate } from './pages/user/admin-user-create/admin-user-create';
+import { AdminUserUpdate } from './pages/user/admin-user-update/admin-user-update';
 
 
 @NgModule({
@@ -49,7 +57,15 @@ import { AdminSetting } from './pages/setting/admin-setting/admin-setting';
     AdminFaq,
     AdminCreateFaq,
     AdminUpdateFaq,
-    AdminSetting
+    AdminSetting,
+    AdminNewsletter,
+    AdminContactUs,
+    AdminContactUsShow,
+    AdminCheckout,
+    AdminCheckoutShow,
+    AdminUser,
+    AdminUserCreate,
+    AdminUserUpdate
   ],
   imports: [
     CommonModule,

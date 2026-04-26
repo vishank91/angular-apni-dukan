@@ -140,12 +140,15 @@
                         products, fast delivery, and reliable customer support. Our goal is to make online shopping
                         simple, accessible, and enjoyable for everyone.</p>
                     <h4 class="footer-heading footer-title">Subscribe Our Newsletter Service</h4>
-                    <form>
+                    <form (submit)="postData($event)">
                         <div class="btn-group w-100">
-                            <input type="email" name="email" placeholder="Email Address" class="form-control p-3 fs-3">
-                            <button class="btn text-light myBackground fs-3">Subscribe</button>
+                            <input type="email" name="email" (change)="getInputData($event)" placeholder="Email Address" class="form-control p-3 fs-3">
+                            <button class="btn text-light myBackground fs-3" type="submit">Subscribe</button>
                         </div>
                     </form>
+                    @if (message) {
+                        <p class="text-light">{{message}}</p>
+                    }
                     <p class="text-light mt-5">
                         Stay updated with the latest offers, new arrivals, and exclusive deals from Apnu Dukan.
                         Subscribe to our newsletter and be the first to know about special discounts, seasonal sales,

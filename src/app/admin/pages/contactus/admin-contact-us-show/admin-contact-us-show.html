@@ -1,0 +1,64 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid my-3 ">
+    <div class="blog">
+        <div class="row">
+            <div class="col-md-3">
+                <app-sidebar></app-sidebar>
+            </div>
+            <div class="col-md-9">
+                <h6 class="fs-2 myBackground text-center p-2 text-light">Contact Us Query</h6>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{data.id}}</td>
+                            </tr>
+                              <tr>
+                                <th>Name</th>
+                                <td>{{data.name}}</td>
+                            </tr>
+                              <tr>
+                                <th>Email</th>
+                                <td>{{data.email}}</td>
+                            </tr>
+                              <tr>
+                                <th>Phone</th>
+                                <td>{{data.phone}}</td>
+                            </tr>
+                              <tr>
+                                <th>Subject</th>
+                                <td>{{data.subject}}</td>
+                            </tr>
+                              <tr>
+                                <th>Message</th>
+                                <td>{{data.message}}</td>
+                            </tr>
+                              <tr>
+                                <th>Date</th>
+                                <td>{{data.date|date:"medium"}}</td>
+                            </tr>
+                              <tr>
+                                <th>Status</th>
+                                <td>{{data.status?"Active":"Inactive"}}</td>
+                            </tr>
+                              <tr>
+                                <th colspan="2">
+                                    @if (data.status==false) {
+                                        <button (click)="deleteRecord()" class="btn btn-danger w-100 p-2 fs-4">Delete Record</button>
+                                    }
+                                    @else{
+                                        <button (click)="updateRecord()" class="btn btn-primary myBackground w-100 p-2 fs-4">Update Record Status</button>
+                                    }
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

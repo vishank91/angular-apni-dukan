@@ -24,6 +24,7 @@ import { ContactUsForm } from './components/contact-us-form/contact-us-form';
 import { Product } from './pages/product/product';
 import { PrivacyPolicy } from './pages/privacy-policy/privacy-policy';
 import { TermsAndConditions } from './pages/terms-and-conditions/terms-and-conditions';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { TermsAndConditions } from './pages/terms-and-conditions/terms-and-condi
   ],
   imports: [
     CommonModule,
-    FrontRoutingModule
+    FrontRoutingModule,
+    ReactiveFormsModule
   ],
   exports: [
     Navbar,

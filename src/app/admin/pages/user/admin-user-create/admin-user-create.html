@@ -1,0 +1,108 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid my-3 ">
+    <div class="blog">
+        <div class="row">
+            <div class="col-md-3">
+                <app-sidebar></app-sidebar>
+            </div>
+            <div class="col-md-9">
+                <h6 class="fs-2 myBackground text-center p-2 text-light">Create User
+                    <a routerLink="/admin/featues"><i class="bi bi-arrow-left fs-2 text-light float-end"></i></a>
+                </h6>
+                <form [formGroup]="myForm" (submit)="postData()">
+                    <div class="row">
+                        <div class="col-lg-6 mb-3">
+                            <label>Name*</label>
+                            <input type="text" name="name" formControlName="name"
+                                [ngClass]="(name?.touched)?'border-danger':'myBorderColor'" class="form-control"
+                                placeholder="Full Name">
+                            @if (name?.invalid && name?.touched) {
+                            <p class="text-danger">Name Field is Mendatory and Its Length Msut Be 3-30 Characters</p>
+                            }
+                        </div>
+
+                        <div class="col-lg-6 mb-3">
+                            <label>User Name*</label>
+                            <input type="text" name="username" formControlName="username"
+                                [ngClass]="(username?.touched || (errorMessage.show && errorMessage.username))?'border-danger':'myBorderColor'"
+                                class="form-control" placeholder="User Name">
+                            @if (username?.invalid && username?.touched) {
+                            <p class="text-danger">Name Field is Mendatory</p>
+                            }
+                            @if (errorMessage.show && errorMessage.name) {
+                            <p class="text-danger">{{errorMessage.username}}</p>
+                            }
+                        </div>
+
+                        <div class="col-lg-6 mb-3">
+                            <label>Email Address*</label>
+                            <input type="text" name="email" formControlName="email"
+                                [ngClass]="(email?.touched || (errorMessage.show && errorMessage.email))?'border-danger':'myBorderColor'"
+                                class="form-control" placeholder="Email Address">
+                            @if (email?.invalid && email?.touched) {
+                            <p class="text-danger">Name Field is Mendatory</p>
+                            }
+                            @if (errorMessage.show && errorMessage.email) {
+                            <p class="text-danger">{{errorMessage.email}}</p>
+                            }
+                        </div>
+
+                        <div class="col-lg-6 mb-3">
+                            <label>Phone Number*</label>
+                            <input type="text" name="phone" formControlName="phone"
+                                [ngClass]="(phone?.touched)?'border-danger':'myBorderColor'" class="form-control"
+                                placeholder="Phone Number">
+                            @if (phone?.invalid && phone?.touched) {
+                            <p class="text-danger">Phone Number Field is Mendatory</p>
+                            }
+                        </div>
+
+                        <div class="col-lg-6 mb-3">
+                            <label>Password*</label>
+                            <input type="password" name="password" formControlName="password"
+                                [ngClass]="(password?.touched || (errorMessage.show && errorMessage.password))?'border-danger':'myBorderColor'"
+                                class="form-control" placeholder="Password">
+                            @if (password?.invalid && password?.touched) {
+                            <p class="text-danger">password Address Field is Mendatory </p>
+                            }
+                            @if (errorMessage.show && errorMessage.password){
+                            <p class="text-danger">{{errorMessage.password}}</p>
+                            }
+                        </div>
+
+
+                        <div class="col-lg-6 mb-3">
+                            <label>Confirm Password*</label>
+                            <input type="password" name="cpassword" formControlName="cpassword"
+                                [ngClass]="(password?.touched || (errorMessage.show && errorMessage.password))?'border-danger':'myBorderColor'"
+                                class="form-control" placeholder="Confirm Password">
+                        </div>
+
+                        <div class="col-lg-6 mb-3">
+                            <label>Role*</label>
+                            <select name="role" formControlName="role" class="form-select myBorderColor">
+                                <option>Admin</option>
+                                <option>Super Admin</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label>Status*</label>
+                            <select name="status" formControlName="status" class="form-select myBorderColor">
+                                <option value="1">Active</option>
+                                <option value="0">Inactive</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12 my-3">
+                            <button type="submit" [disabled]="myForm.invalid"
+                                class="shop-btn myBackground btn-lg p-3 w-100">Create</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

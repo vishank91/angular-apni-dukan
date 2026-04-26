@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid my-3 ">
+    <div class="blog">
+        <div class="row">
+            <div class="col-md-3">
+                <app-sidebar></app-sidebar>
+            </div>
+            <div class="col-md-9">
+                <h6 class="fs-2 myBackground text-center p-2 text-light">User
+                    <a routerLink="/admin/user/create"><i class="bi bi-plus fs-2 text-light float-end"></i></a>
+                </h6>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Userna,e</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (item of data; track $index) {
+                            <tr>
+                                <td>{{item.id}}</td>
+                                <td>{{item.name}}</td>
+                                <td>{{item.username}}</td>
+                                <td>{{item.email}}</td>
+                                <td>{{item.phone}}</td>
+                                <td>{{item.role}}</td>
+                                <td>{{item.status?"Active":"Inactive"}}</td>
+                                <td><a [routerLink]="['/admin/user/update']" [queryParams]="{id:item.id}"
+                                        class="btn btn-primary btn-lg myBackground"><i
+                                            class="bi bi-pencil fs-3"></i></a>
+                                </td>
+                                <td><button (click)="deleteRecord(item.id)" class="btn btn-danger p-2"><i
+                                            class="bi bi-x fs-3"></i></button></td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
