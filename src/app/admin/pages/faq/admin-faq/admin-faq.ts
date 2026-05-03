@@ -1,5 +1,6 @@
 import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
 import { DataService } from '../../../../services/data-service';
+import { StorageService } from '../../../../services/storage-service';
 
 declare var $: any
 @Component({
@@ -11,9 +12,10 @@ declare var $: any
 export class AdminFaq implements AfterViewInit {
   dataTable: any
   time: any
+  role: any = "Admin"
 
   data: any = []
-  constructor(private dataService: DataService, private cdr: ChangeDetectorRef) { }
+  constructor(private dataService: DataService, private cdr: ChangeDetectorRef, private storage: StorageService) { }
 
   ngOnInit() {
     this.dataService.getFaq().subscribe((response: any) => {
@@ -23,6 +25,7 @@ export class AdminFaq implements AfterViewInit {
   }
 
   ngAfterViewInit() {
+    this.role = this.storage.getStorage().role
     this.time = setTimeout(() => {
       if (!$.fn.DataTable.isDataTable("#dataTable")) {
         this.dataTable = $('#dataTable').DataTable()

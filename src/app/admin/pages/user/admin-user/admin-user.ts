@@ -18,7 +18,7 @@ export class AdminUser implements AfterViewInit {
 
   ngOnInit() {
     this.dataService.getUser().subscribe((response: any) => {
-      this.data = { ...response }
+      this.data = [...response]
       this.cdr.detectChanges()
     })
   }

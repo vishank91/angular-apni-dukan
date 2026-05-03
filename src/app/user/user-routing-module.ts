@@ -6,10 +6,12 @@ import { SignupPage } from './pages/signup-page/signup-page';
 import { CartPage } from './pages/cart-page/cart-page';
 import { CheckoutPage } from './pages/checkout-page/checkout-page';
 import { OrderConfirmationPage } from './pages/order-confirmation-page/order-confirmation-page';
+import { userGuard } from '../RouteGuards/user-guard';
 
 const routes: Routes = [
   {
     path: "",
+    canActivate: [userGuard],
     component: ProfilePage
   },
   {
@@ -22,14 +24,17 @@ const routes: Routes = [
   },
   {
     path: "cart",
+    canActivate: [userGuard],
     component: CartPage
   },
   {
     path: "checkout",
+    canActivate: [userGuard],
     component: CheckoutPage
   },
   {
     path: "order-confirmation",
+    canActivate: [userGuard],
     component: OrderConfirmationPage
   },
 ];

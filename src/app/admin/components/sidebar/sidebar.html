@@ -1,26 +1,28 @@
 <div class="list-group">
-    <a routerLink="/admin" class="p-2 mb-1 rounded myBackground text-light" aria-current="true"><i
-            class="bi bi-house-door"></i> <span class="float-end">Home</span></a>
-    <a routerLink="/admin/maincategory" class="p-2 mb-1 rounded myBackground text-light" aria-current="true"><i
-            class="bi bi-bookmarks"></i> <span class="float-end">Maincategory</span></a>
-    <a routerLink="/admin/subcategory" class="p-2 mb-1 rounded myBackground text-light" aria-current="true"><i
-            class="bi bi-bookmarks"></i> <span class="float-end">Subcategory</span></a>
-    <a routerLink="/admin/brand" class="p-2 mb-1 rounded myBackground text-light" aria-current="true"><i
-            class="bi bi-bookmarks"></i> <span class="float-end">Brand</span></a>
-    <a routerLink="/admin/product" class="p-2 mb-1 rounded myBackground text-light" aria-current="true"><i
-            class="bi bi-card-list"></i> <span class="float-end">Product</span></a>
-    <a routerLink="/admin/features" class="p-2 mb-1 rounded myBackground text-light" aria-current="true"><i
-            class="bi bi-heart"></i> <span class="float-end">Features</span></a>
-    <a routerLink="/admin/faq" class="p-2 mb-1 rounded myBackground text-light" aria-current="true"><i
-            class="bi bi-question-circle"></i> <span class="float-end">Faq</span></a>
-    <a routerLink="/admin/setting" class="p-2 mb-1 rounded myBackground text-light" aria-current="true"><i
-            class="bi bi-gear"></i> <span class="float-end">Settings</span></a>
-    <a routerLink="/admin/newsletter" class="p-2 mb-1 rounded myBackground text-light" aria-current="true"><i
-            class="bi bi-envelope"></i> <span class="float-end">Newsletter</span></a>
-    <a routerLink="/admin/contactus" class="p-2 mb-1 rounded myBackground text-light" aria-current="true"><i
-            class="bi bi-telephone"></i> <span class="float-end">Contact Us</span></a>
-    <a routerLink="/admin/checkout" class="p-2 mb-1 rounded myBackground text-light" aria-current="true"><i
-            class="bi bi-bag-check"></i> <span class="float-end">Checkout</span></a>
-    <a routerLink="/admin/user" class="p-2 mb-1 rounded myBackground text-light" aria-current="true"><i
-            class="bi bi-people"></i> <span class="float-end">Users</span></a>
+        <a routerLink="/admin" class="p-2 mb-1 rounded myBackground text-light" aria-current="true"><i
+                        class="bi bi-house-door"></i> <span class="float-end">Home</span></a>
+        <a routerLink="/admin/maincategory" class="p-2 mb-1 rounded myBackground text-light" aria-current="true"><i
+                        class="bi bi-bookmarks"></i> <span class="float-end">Maincategory</span></a>
+        <a routerLink="/admin/subcategory" class="p-2 mb-1 rounded myBackground text-light" aria-current="true"><i
+                        class="bi bi-bookmarks"></i> <span class="float-end">Subcategory</span></a>
+        <a routerLink="/admin/brand" class="p-2 mb-1 rounded myBackground text-light" aria-current="true"><i
+                        class="bi bi-bookmarks"></i> <span class="float-end">Brand</span></a>
+        <a routerLink="/admin/product" class="p-2 mb-1 rounded myBackground text-light" aria-current="true"><i
+                        class="bi bi-card-list"></i> <span class="float-end">Product</span></a>
+        <a routerLink="/admin/features" class="p-2 mb-1 rounded myBackground text-light" aria-current="true"><i
+                        class="bi bi-heart"></i> <span class="float-end">Features</span></a>
+        <a routerLink="/admin/faq" class="p-2 mb-1 rounded myBackground text-light" aria-current="true"><i
+                        class="bi bi-question-circle"></i> <span class="float-end">Faq</span></a>
+        <a routerLink="/admin/setting" class="p-2 mb-1 rounded myBackground text-light" aria-current="true"><i
+                        class="bi bi-gear"></i> <span class="float-end">Settings</span></a>
+        <a routerLink="/admin/newsletter" class="p-2 mb-1 rounded myBackground text-light" aria-current="true"><i
+                        class="bi bi-envelope"></i> <span class="float-end">Newsletter</span></a>
+        <a routerLink="/admin/contactus" class="p-2 mb-1 rounded myBackground text-light" aria-current="true"><i
+                        class="bi bi-telephone"></i> <span class="float-end">Contact Us</span></a>
+        <a routerLink="/admin/checkout" class="p-2 mb-1 rounded myBackground text-light" aria-current="true"><i
+                        class="bi bi-bag-check"></i> <span class="float-end">Checkout</span></a>
+        @if(role==="Super Admin"){
+        <a routerLink="/admin/user" class="p-2 mb-1 rounded myBackground text-light" aria-current="true"><i
+                        class="bi bi-people"></i> <span class="float-end">Users</span></a>
+        }
 </div>

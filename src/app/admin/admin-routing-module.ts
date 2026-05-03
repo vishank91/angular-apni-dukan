@@ -28,118 +28,148 @@ import { AdminCheckoutShow } from './pages/checkout/admin-checkout-show/admin-ch
 import { AdminUser } from './pages/user/admin-user/admin-user';
 import { AdminUserCreate } from './pages/user/admin-user-create/admin-user-create';
 import { AdminUserUpdate } from './pages/user/admin-user-update/admin-user-update';
+import { adminGuard } from '../RouteGuards/admin-guard';
+import { superAdminGuard } from '../RouteGuards/super-admin-guard';
 
 const routes: Routes = [
   {
     path: "",
+    canActivate: [adminGuard],
     component: AdminHome
   },
   {
     path: "maincategory",
+    canActivate: [adminGuard],
     component: AdminMaincategory
   },
   {
     path: "maincategory/create",
+    canActivate: [adminGuard],
     component: AdminCreateMaincategory
   },
   {
     path: "maincategory/update",
+    canActivate: [adminGuard],
     component: AdminUpdateMaincategory
   },
   {
     path: "subcategory",
+    canActivate: [adminGuard],
     component: AdminSubcategory
   },
   {
     path: "subcategory/create",
+    canActivate: [adminGuard],
     component: AdminCreateSubcategory
   },
   {
     path: "subcategory/update",
+    canActivate: [adminGuard],
     component: AdminUpdateSubcategory
   },
   {
     path: "brand",
+    canActivate: [adminGuard],
     component: AdminBrand
   },
   {
     path: "brand/create",
+    canActivate: [adminGuard],
     component: AdminCreateBrand
   },
   {
     path: "brand/update",
+    canActivate: [adminGuard],
     component: AdminUpdateBrand
   },
   {
     path: "product",
+    canActivate: [adminGuard],
     component: AdminProduct
   },
   {
     path: "product/create",
+    canActivate: [adminGuard],
     component: AdminCreateProduct
   },
   {
     path: "product/update",
+    canActivate: [adminGuard],
     component: AdminUpdateProduct
   },
   {
     path: "features",
+    canActivate: [adminGuard],
     component: AdminFeature
   },
   {
     path: "features/create",
+    canActivate: [adminGuard],
     component: AdminCreateFeature
   },
   {
     path: "features/update",
+    canActivate: [adminGuard],
     component: AdminUpdateFeature
   },
   {
     path: "faq",
+    canActivate: [adminGuard],
     component: AdminFaq
   },
   {
     path: "faq/create",
+    canActivate: [adminGuard],
     component: AdminCreateFaq
   },
   {
     path: "faq/update",
+    canActivate: [adminGuard],
     component: AdminUpdateFaq
   },
   {
     path: "setting",
+    canActivate: [adminGuard],
     component: AdminSetting
   },
   {
     path: "newsletter",
+    canActivate: [adminGuard],
     component: AdminNewsletter
   },
   {
     path: "contactus",
+    canActivate: [adminGuard],
     component: AdminContactUs
   },
   {
     path: "contactus/show",
+    canActivate: [adminGuard],
     component: AdminContactUsShow
   },
   {
     path: "checkout",
+    canActivate: [adminGuard],
     component: AdminCheckout
   },
   {
     path: "checkout/show",
+    canActivate: [adminGuard],
     component: AdminCheckoutShow
   },
   {
     path: "user",
+    canActivate: [superAdminGuard],
     component: AdminUser
   },
   {
     path: "user/create",
+    canActivate: [superAdminGuard],
     component: AdminUserCreate
   },
   {
     path: "user/update",
+    canActivate: [superAdminGuard],
     component: AdminUserUpdate
   }
 ];

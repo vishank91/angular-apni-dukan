@@ -17,7 +17,8 @@ export class AdminUserCreate {
     phone: new FormControl("", Validators.required),
     role: new FormControl("Admin", Validators.required),
     password: new FormControl("", Validators.required),
-    cpassword: new FormControl("", Validators.required)
+    cpassword: new FormControl("", Validators.required),
+    status: new FormControl("1")
   })
 
   errorMessage: any = {
@@ -52,6 +53,11 @@ export class AdminUserCreate {
   }
 
   constructor(private dataService: DataService, private router: Router, private cdr: ChangeDetectorRef) { }
+
+  changeErrorMessage(key: any) {
+    console.log(key)
+    this.errorMessage = { ...this.errorMessage, [key]: '' }
+  }
 
   postData() {
     if (this.myForm.value.password !== this.myForm.value.cpassword)

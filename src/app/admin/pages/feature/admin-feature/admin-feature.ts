@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
 import { DataService } from '../../../../services/data-service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { StorageService } from '../../../../services/storage-service';
 
 declare var $: any
 
@@ -13,11 +14,13 @@ declare var $: any
 export class AdminFeature implements AfterViewInit {
   dataTable: any
   time: any
+  role: any = "Admin"
 
   data: any = []
-  constructor(private dataService: DataService, private cdr: ChangeDetectorRef, private sanitizer: DomSanitizer) { }
+  constructor(private dataService: DataService, private cdr: ChangeDetectorRef, private sanitizer: DomSanitizer, private storage: StorageService) { }
 
   ngOnInit() {
+    this.role = this.storage.getStorage().role
     this.dataService.getFeature().subscribe((response: any) => {
       this.data = response.map((x: any) => ({
         ...x,

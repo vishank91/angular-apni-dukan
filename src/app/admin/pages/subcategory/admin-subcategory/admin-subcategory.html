@@ -12,36 +12,41 @@
                 </h6>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Pic</th>
-                            <th>Status</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @for (item of data; track $index) {
-                        <tr>
-                            <td>{{item.id}}</td>
-                            <td>{{item.name}}</td>
-                            <td>
-                                <a href="{{imageServerUrl}}/{{item.pic}}" target="_blank">
-                                    <img src="{{imageServerUrl}}/{{item.pic}}" height="70px" width="70px" alt="">
-                                </a>
-                            </td>
-                            <td>{{item.status?"Active":"Inactive"}}</td>
-                            <td><a [routerLink]="['/admin/subcategory/update']" [queryParams]="{id:item.id}"
-                                    class="btn btn-primary btn-lg myBackground"><i class="bi bi-pencil fs-3"></i></a>
-                            </td>
-                            <td><button (click)="deleteRecord(item.id)" class="btn btn-danger p-2"><i
-                                        class="bi bi-x fs-3"></i></button></td>
-                        </tr>
-                        }
-                    </tbody>
-                </table>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Pic</th>
+                                <th>Status</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (item of data; track $index) {
+                            <tr>
+                                <td>{{item.id}}</td>
+                                <td>{{item.name}}</td>
+                                <td>
+                                    <a href="{{imageServerUrl}}/{{item.pic}}" target="_blank">
+                                        <img src="{{imageServerUrl}}/{{item.pic}}" height="70px" width="70px" alt="">
+                                    </a>
+                                </td>
+                                <td>{{item.status?"Active":"Inactive"}}</td>
+                                <td><a [routerLink]="['/admin/subcategory/update']" [queryParams]="{id:item.id}"
+                                        class="btn btn-primary btn-lg myBackground"><i
+                                            class="bi bi-pencil fs-3"></i></a>
+                                </td>
+                                <td>
+                                    @if(role==="Super Admin"){
+                                    <button (click)="deleteRecord(item.id)" class="btn btn-danger p-2"><i
+                                            class="bi bi-x fs-3"></i></button>
+                                    }
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
 import { DataService } from '../../../../services/data-service';
 import { environment } from '../../../../../environments/environment';
+import { StorageService } from '../../../../services/storage-service';
 
 declare var $: any
 
@@ -10,15 +11,17 @@ declare var $: any
   templateUrl: './admin-subcategory.html',
   styleUrl: './admin-subcategory.css',
 })
-export class AdminSubcategory  implements AfterViewInit {
+export class AdminSubcategory implements AfterViewInit {
   dataTable: any
   time: any
+  role: any = "Admin"
 
   imageServerUrl = environment.imageServerUrl
   data: any = []
-  constructor(private dataService: DataService, private cdr: ChangeDetectorRef) { }
+  constructor(private dataService: DataService, private cdr: ChangeDetectorRef, private storage: StorageService) { }
 
   ngOnInit() {
+    this.role = this.storage.getStorage().role
     this.dataService.getSubcategory().subscribe((response: any) => {
       this.data = [...response]
       this.cdr.detectChanges()
